@@ -3,6 +3,7 @@ from typing import Final
 from dotenv import load_dotenv
 from aiogram import Dispatcher, Bot, executor
 from .commands import bot_commands
+from .handlers import bot_handlers
 
 load_dotenv();
 BOT_TOKEN: Final = os.getenv('BOT_TOKEN')
@@ -11,6 +12,7 @@ dp = Dispatcher(bot)
 
 def start_bot() -> None:
     print('Polling...')
-    bot_commands.register_handlers(dp)
+    bot_handlers.register_handlers(dp)
+    bot_commands.register_commands(dp)
     executor.start_polling(dp, skip_updates=True)
     
