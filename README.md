@@ -9,3 +9,15 @@ Resume writing bot specifically for IT STEP
 pip install -U aiogram
 pip install python-dotenv 
 ```
+
+## Bot Launch
+```
+step-resume-bot/  
+├─ public/  
+├─ src/  
+├─ tests/  
+├─ .gitignore  
+├─ LICENSE  
+├─ README.md  
+├─ run.py  <-- run this file
+```
