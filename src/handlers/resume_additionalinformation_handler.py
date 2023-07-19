@@ -17,4 +17,4 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
     keyboard.add(keyboard_button2)
 
     await state.finish();
-    await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")
+    return await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")

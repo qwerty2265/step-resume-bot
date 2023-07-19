@@ -17,8 +17,6 @@ async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
     
     if msg.photo:
         await ResumeFormState.next();
-        await msg.answer(message, parse_mode="HTML")
-        return
-    
+        return await msg.answer(message, parse_mode="HTML")
 
     await msg.answer(error_message, parse_mode="HTML")

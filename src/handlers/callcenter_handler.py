@@ -54,4 +54,4 @@ https://t.me/+M-FBa3ByjddmYTIy
 +7 708 651 47 62
             '''
     await CallCenterState.CallCenterCity.set()
-    await msg.answer(callcenter_info, reply_markup=keyboard)
+    return await msg.answer(callcenter_info, reply_markup=keyboard)

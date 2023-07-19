@@ -19,4 +19,4 @@ async def resume_hardskills_handler(msg: types.Message, state: FSMContext) -> No
 '''
 
     await ResumeFormState.next();
-    await msg.answer(message, parse_mode="HTML")
+    return await msg.answer(message, parse_mode="HTML")

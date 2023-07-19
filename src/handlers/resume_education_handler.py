@@ -15,4 +15,4 @@ async def resume_education_handler(msg: types.Message, state: FSMContext) -> Non
 '''
 
     await ResumeFormState.next();
-    await msg.answer(message, parse_mode="HTML")
+    return await msg.answer(message, parse_mode="HTML")

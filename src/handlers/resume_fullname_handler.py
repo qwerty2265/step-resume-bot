@@ -18,7 +18,7 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
 
     if contains_only_letters(input_message) and count_spaces_inside_string(input_message) >= 1:
         await ResumeFormState.next();
-        await msg.answer(message, parse_mode="HTML")
-        return
+
+        return await msg.answer(message, parse_mode="HTML")
 
     await msg.answer(error_message, parse_mode="HTML")

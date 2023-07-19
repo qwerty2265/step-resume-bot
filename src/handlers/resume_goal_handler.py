@@ -9,4 +9,4 @@ async def resume_goal_handler(msg: types.Message, state: FSMContext) -> None:
 '''
 
     await ResumeFormState.next();
-    await msg.answer(message, parse_mode="HTML")
+    return await msg.answer(message, parse_mode="HTML")

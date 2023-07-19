@@ -24,7 +24,6 @@ async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> N
 
     if contains_phone_number(input_message) and correct_length_phone_number(input_message):
         await ResumeFormState.next();
-        await msg.answer(message, parse_mode="HTML")
-        return
+        return await msg.answer(message, parse_mode="HTML")
 
     await msg.answer(error_message, parse_mode="HTML")
