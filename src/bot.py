@@ -6,6 +6,7 @@ from .commands import bot_commands
 from .handlers import bot_handlers
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
+
 load_dotenv();
 BOT_TOKEN: Final = os.getenv('BOT_TOKEN')
 STORAGE = MemoryStorage()
