@@ -8,7 +8,8 @@ async def help_command(msg: types.Message, state: FSMContext) -> None:
 
 Для этого у меня есть:
 
-/resume - команда, для начала составления резюме со мной.
+/resume - команда, для начала составления резюме.
+
 /callcenters - команда, показывающая список доступных колл-центров
 '''
 
