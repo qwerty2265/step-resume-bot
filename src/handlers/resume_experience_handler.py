@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from ..state import ResumeFormState
 
-async def resume_hardskills_handler(msg: types.Message, state: FSMContext) -> None:
+async def resume_experience_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
 Шаг 8: Подробно распишите ваши профессиональные навыки.
 Золотое правило составление резюме:
