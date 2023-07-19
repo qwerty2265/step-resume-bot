@@ -1,5 +1,4 @@
 from aiogram import types
-from aiogram.dispatcher import FSMContext
 from ..state import UserState
 
 async def callcenter_command(msg: types.Message) -> None:
