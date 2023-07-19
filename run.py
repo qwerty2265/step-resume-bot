@@ -1,4 +1,7 @@
 from src import bot
 
 if __name__ == "__main__":
-    bot.start_bot()
+    try:
+        bot.start_bot()
+    except:
+        print(Exception)

@@ -1,6 +1,7 @@
 from aiogram import types
+from aiogram.dispatcher.filters.state import State, StatesGroup
 
-async def callcenter_handler(msg: types.Message) -> None:
+async def callcenter_command(msg: types.Message) -> None:
     message: str = 'Контакты карьерного центра здесь вы можете обратиться в нужный карьерный центр.\nДля начала выберите филиал?'
 
     keyboard_button1 = types.KeyboardButton(text='Алматы')

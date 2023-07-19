@@ -11,8 +11,9 @@ bot = Bot(token=BOT_TOKEN, parse_mode="HTML")
 dp = Dispatcher(bot)
 
 def start_bot() -> None:
-    print('Polling...')
+    print('Starting...')
     bot_handlers.register_handlers(dp)
     bot_commands.register_commands(dp)
+    print('Polling...')
     executor.start_polling(dp, skip_updates=True)
     
