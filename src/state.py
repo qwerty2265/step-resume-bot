@@ -1,13 +1,12 @@
 from aiogram.dispatcher.filters.state import State, StatesGroup
 
 class UserState(StatesGroup):
+    Start = State()
     CreateResume = State()
     ShowCallcenters = State()
 
-class CallCenterState():
-    CallCenterAlmaty = State()
-    CallCenterAstana = State()
-    CallCenterStateKaraganda = State()
+class CallCenterState(StatesGroup):
+    CallCenterCity = State()
     
 class ResumeFormState(StatesGroup):
     UserFullName = State()
