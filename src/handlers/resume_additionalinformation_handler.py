@@ -7,7 +7,7 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
 Спасибо за использование бота для составления вашего резюме!
 
 Резюме будет на рассмотрении у HR.
-А также будет выслано вам в виде pdf файла.
+А также будет выслано вам в виде pdf/docx файла.
 '''
 
     keyboard_button1 = types.KeyboardButton(text='Вернуться в начало')
@@ -17,4 +17,4 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
     keyboard.add(keyboard_button2)
 
     await state.finish();
-    await msg.answer(message, reply_markup=keyboard)
+    await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")

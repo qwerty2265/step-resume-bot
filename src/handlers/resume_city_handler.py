@@ -5,7 +5,7 @@ from ..utils import contains_only_letters
 
 async def resume_city_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
-Шаг 3: Загрузите свое фото.
+<b>Шаг 3</b>: Загрузите свое фото.
 
 Фото – та деталь, с которой HR начнет знакомство с вами. 
 Не размещайте в своем резюме селфи, мелкие и некачественные фотографии, фото в компании других людей или с общего застолья. 
@@ -22,7 +22,7 @@ async def resume_city_handler(msg: types.Message, state: FSMContext) -> None:
 
     if contains_only_letters(input_message):
         await ResumeFormState.next()
-        await msg.answer(message)
+        await msg.answer(message, parse_mode="HTML")
         return
 
-    await msg.answer(error_message)
+    await msg.answer(error_message, parse_mode="HTML")

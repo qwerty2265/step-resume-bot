@@ -3,7 +3,7 @@ from ..state import ResumeFormState, UserState
 
 async def resume_command(msg: types.Message) -> None:
     message: str = '''
-Шаг 1: Напиши свое ФИО.
+<b>Шаг 1</b>: Напиши свое ФИО.
 Желательно напиши свое ФИО так, как написано у тебя в государственных документах (удостоверение личности).
 '''
 

@@ -4,7 +4,7 @@ from ..state import ResumeFormState
 
 async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
-Шаг 4: Укажите цель поиска.
+<b>Шаг 4</b>: Укажите цель поиска.
 
 Это опциональный блок, его не всегда нужно заполнять – все зависит от ваших навыков и вакансии.
 
@@ -17,8 +17,8 @@ async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
     
     if msg.photo:
         await ResumeFormState.next();
-        await msg.answer(message)
+        await msg.answer(message, parse_mode="HTML")
         return
     
 
-    await msg.answer(error_message)
+    await msg.answer(error_message, parse_mode="HTML")

@@ -4,9 +4,9 @@ from ..state import ResumeFormState
 
 async def resume_goal_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
-Шаг 5: Напишите свой номер телефона.
+<b>Шаг 5</b>: Напишите свой номер телефона.
 Укажите актуальный номер телефона, на который вы 100% ответите в рабочее время.
 '''
 
     await ResumeFormState.next();
-    await msg.answer(message)
+    await msg.answer(message, parse_mode="HTML")

@@ -5,7 +5,7 @@ from ..utils import contains_only_letters, count_spaces_inside_string
 
 async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
-Шаг 2: Напиши свой город, в котором вы ищете работу.
+<b>Шаг 2</b>: Напиши свой город, в котором вы ищете работу.
 '''
     input_message: str = msg.text
     error_message: str = 'Случилась непредвиденная ошибка.'
@@ -18,7 +18,7 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
 
     if contains_only_letters(input_message) and count_spaces_inside_string(input_message) >= 1:
         await ResumeFormState.next();
-        await msg.answer(message)
+        await msg.answer(message, parse_mode="HTML")
         return
 
-    await msg.answer(error_message)
+    await msg.answer(error_message, parse_mode="HTML")
