@@ -19,6 +19,12 @@ def correct_length_phone_number(input_string: str) -> bool:
         return False
     
     return True
+
+def count_spaces_inside_string(input_string: str) -> int:
+    # Используем метод .strip() для удаления пробелов с обоих сторон строки
+    # Затем сравниваем длину исходной строки с длиной строки без пробелов по краям
+    # Разница между ними и будет количеством пробелов внутри строки
+    return len(input_string) - len(input_string.strip(' '))
     
 def contains_only_letters(input_string: str) -> bool:
     # Удаление пробелов в строке 
