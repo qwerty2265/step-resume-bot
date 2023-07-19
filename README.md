@@ -11,7 +11,8 @@ pip install python-dotenv
 ```
 
 ## Database
-Download [PostgreSQL 15.3](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
+### SQLite
+You can download either [SQlite](https://www.sqlite.org/download.html) or [SQLiteStudio](https://github.com/pawelsalawa/sqlitestudio/releases)
 
 ## Bot Launch
 ```
