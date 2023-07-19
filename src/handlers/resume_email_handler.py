@@ -1,7 +1,6 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from ..state import ResumeFormState
-from ..utils import contains_phone_number
 
 async def resume_email_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
