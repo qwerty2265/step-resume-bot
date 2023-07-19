@@ -1,5 +1,6 @@
 import sqlite3 as sqlite
 from typing import Final
+import logging
 
 def sqlite_start():
     path: Final = './database/telegram_bot_users_resume.db'
@@ -7,7 +8,7 @@ def sqlite_start():
     cursor = database.cursor()
 
     if database:
-        print('Connected...')
+        logging.info('Connected...')
 
     database.execute('''
     CREATE TABLE IF NOT EXISTS users(
