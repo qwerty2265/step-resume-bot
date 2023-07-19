@@ -29,5 +29,4 @@ async def resume_city_handler(msg: types.Message, state: FSMContext) -> None:
         await msg.answer(message)
         return
 
-    
     await msg.answer(error_message)

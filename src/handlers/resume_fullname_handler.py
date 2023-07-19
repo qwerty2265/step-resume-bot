@@ -19,4 +19,3 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
         return
 
     await msg.answer(error_message)
-    print(state.get_state())

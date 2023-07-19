@@ -20,7 +20,7 @@ def register_commands(dp):
         callcenter_command, Text(equals='вернуться к выбору филиала', ignore_case=True) , state=CallCenterState.CallCenterCity
     )
 
-    dp.register_message_handler(resume_command, commands=['resume'])
+    dp.register_message_handler(resume_command, commands=['resume'], state="*")
     dp.register_message_handler(
         resume_command, Text(equals='хочу составить резюме', ignore_case=True)
     )
