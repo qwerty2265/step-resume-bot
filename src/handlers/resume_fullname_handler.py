@@ -1,6 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from ..state import ResumeFormState
+from ..utils import contains_only_letters
 
 async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
@@ -9,10 +10,6 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
     input_message: str = msg.text
     error_message: str = 'Ваш ответ должен содержать только буквы.'
 
-    def contains_only_letters(string: str) -> bool:
-        input_string = ''.join(string.split())
-        return input_string.isalpha()
-    
     if contains_only_letters(input_message):
         await ResumeFormState.next();
         await msg.answer(message)
