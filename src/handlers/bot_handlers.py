@@ -9,6 +9,7 @@ from .resume_email_handler import resume_email_handler
 from .resume_education_handler import resume_education_handler
 from .resume_experience_handler import resume_experience_handler
 from .resume_hardskills_handler import resume_hardskills_handler
+from .resume_softskills_handler import resume_softskills_handler
 from ..state import *
 
 def register_handlers(dp):
@@ -43,3 +44,7 @@ def register_handlers(dp):
     dp.register_message_handler(
         resume_hardskills_handler, state=ResumeFormState.UserHardSkills, content_types=types.ContentTypes.TEXT
     )
+    dp.register_message_handler(
+        resume_softskills_handler, state=ResumeFormState.UserSoftSkills, content_types=types.ContentTypes.TEXT
+    )
+    
