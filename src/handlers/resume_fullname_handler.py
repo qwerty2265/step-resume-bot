@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from ..state import ResumeFormState
 
-async def resume_handler(msg: types.Message, state: FSMContext) -> None:
+async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
 Шаг 2: Напиши свой город, в котором вы ищете работу.
 '''
