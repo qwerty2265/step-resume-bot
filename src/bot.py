@@ -15,8 +15,8 @@ dp = Dispatcher(bot, storage=STORAGE)
 
 def start_bot() -> None:
     print('Starting...')
-    bot_handlers.register_handlers(dp)
     bot_commands.register_commands(dp)
+    bot_handlers.register_handlers(dp)
     print('Polling...')
     executor.start_polling(dp, skip_updates=True)
     
