@@ -4,6 +4,7 @@ from .resume_fullname_handler import resume_fullname_handler
 from .resume_city_handler import resume_city_handler
 from .resume_image_handler import resume_image_handler
 from .resume_goal_handler import resume_goal_handler
+from .resume_phonenumber_handler import resume_phonenumber_handler
 from ..state import *
 
 def register_handlers(dp):
@@ -22,5 +23,8 @@ def register_handlers(dp):
     )
     dp.register_message_handler(
         resume_goal_handler, state=ResumeFormState.UserGoal, content_types=types.ContentTypes.TEXT
+    )
+    dp.register_message_handler(
+        resume_phonenumber_handler, state=ResumeFormState.UserPhoneNumber, content_types=types.ContentTypes.TEXT
     )
 
