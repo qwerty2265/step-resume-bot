@@ -1,7 +1,7 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 from ..state import ResumeFormState
-from ..utils import contains_phone_number
+from ..utils import contains_phone_number, correct_length_phone_number
 
 async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
@@ -12,9 +12,15 @@ async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> N
 Почта кошечка92 и прочие проявления фантазии рекрутеры не воспринимают всерьез.
 '''
     input_message: str = msg.text
-    error_message: str = 'Ваш ответ должен содержать только цифры и знак "+".'
+    error_message: str = 'Случилась непредвиденная ошибка.'
 
-    if contains_phone_number(input_message):
+    if not correct_length_phone_number(input_message):
+        error_message = 'Ваш ответ должен содержать минимум 11 символов.'
+
+    if not contains_phone_number(input_message):
+        error_message = 'Ваш ответ должен содержать только цифры и знак "+".'
+
+    if contains_phone_number(input_message) and correct_length_phone_number(input_message):
         await ResumeFormState.next();
         await msg.answer(message)
         return
