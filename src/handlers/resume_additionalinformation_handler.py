@@ -16,5 +16,5 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
     keyboard.add(keyboard_button1)
     keyboard.add(keyboard_button2)
 
-    await ResumeFormState.finish();
+    await state.finish();
     await msg.answer(message, reply_markup=keyboard)
