@@ -1,3 +1,10 @@
+# NOT READY YET
+### private channel with user's resumes - X  
+### "skip" button in resume command = X
+### pdf file support - X
+### docx file support - X
+### . . .
+
 # Step Resume Bot
 Resume writing bot specifically for IT STEP
 
@@ -34,3 +41,4 @@ BOT_TOKEN={YOUR TOKEN}
 BOT_USERNAME={YOUR NAME}
 ENCRYPTION_KEY={WILL CREATE AFTER FIRST LAUNCH}
 ```
+
