@@ -10,10 +10,6 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
     input_message: str = msg.text
     error_message: str = 'Случилась непредвиденная ошибка.'
 
-    state_now = await state.get_state()
-    state_now = state_now.replace(':', '.')
-    print(state_now)
-
     keyboard_button1 = types.KeyboardButton(text='Вернуться на прошлый шаг')
     keyboard_button2 = types.KeyboardButton(text='Вернуться в начало')
     keyboardFail = types.ReplyKeyboardMarkup(resize_keyboard=True)

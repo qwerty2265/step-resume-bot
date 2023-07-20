@@ -9,6 +9,8 @@ async def start_command(msg: types.Message, state: FSMContext) -> None:
 Для более подробной информации напиши /help
 '''
 
+    await state.finish()
+
     keyboard_button1 = types.KeyboardButton(text='Хочу составить резюме')
     keyboard_button2 = types.KeyboardButton(text='Контакты КЦ')
 
@@ -17,5 +19,4 @@ async def start_command(msg: types.Message, state: FSMContext) -> None:
     keyboard.add(keyboard_button1)
     keyboard.add(keyboard_button2)
 
-    await state.finish()
     await msg.answer(message, reply_markup=keyboard)

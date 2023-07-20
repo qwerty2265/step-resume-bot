@@ -2,6 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from database.commands import sqlite_add_command
 from ..state import ResumeFormState
+import logging 
 
 async def resume_additionalinformation_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
@@ -22,6 +23,6 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
             data["add_info"] = msg.text
         await sqlite_add_command.sqlite_add_command(state)
     except Exception as ex:
-        print(ex)
+        logging.error(ex)
     await ResumeFormState.next()
     return await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")

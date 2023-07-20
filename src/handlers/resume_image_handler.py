@@ -20,8 +20,7 @@ async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
     
     load_dotenv()
     BOT_TOKEN = os.getenv('BOT_TOKEN')
-    bot = Bot(BOT_TOKEN)
-
+    bot = Bot(BOT_TOKEN) 
     if msg.photo:
         # Конвертация изображения в биты
         image = msg.photo
@@ -31,7 +30,6 @@ async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
 
         async with state.proxy() as data:
             data["image"] = new_image
-        await ResumeFormState.next();
-        return await msg.answer(message, parse_mode="HTML")
 
-    await msg.answer(error_message, parse_mode="HTML")
+    await ResumeFormState.next();
+    return await msg.answer(message, parse_mode="HTML")

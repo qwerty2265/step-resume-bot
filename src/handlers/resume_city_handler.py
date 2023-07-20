@@ -19,7 +19,6 @@ async def resume_city_handler(msg: types.Message, state: FSMContext) -> None:
 '''
     input_message: str = msg.text
     error_message: str = 'Ваш ответ должен содержать только буквы.'
-
     keyboard_button1 = types.KeyboardButton(text='Вернуться на прошлый шаг')
     keyboard_button2 = types.KeyboardButton(text='Вернуться в начало')
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)

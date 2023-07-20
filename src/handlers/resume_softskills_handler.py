@@ -13,9 +13,10 @@ async def resume_softskills_handler(msg: types.Message, state: FSMContext) -> No
 Неверно:
 Коммуникабельность.
 '''
+    keyboard_button1 = types.KeyboardButton(text='Вернуться на прошлый шаг')
     keyboard_button2 = types.KeyboardButton(text='Завершить')
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(keyboard_button2)
+    keyboard.add(keyboard_button1,keyboard_button2)
 
     async with state.proxy() as data:
             data["softskills"] = msg.text

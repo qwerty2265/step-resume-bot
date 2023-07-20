@@ -10,7 +10,6 @@ async def resume_experience_handler(msg: types.Message, state: FSMContext) -> No
 •	Указывайте только то, что относиться к требованиям вакансии. Укажите только практические навыки. 
 •	Например, владение конкретными языками программирования, поддержка и администрирование серверного оборудования или владение специализированными программами.  
 '''
-
     async with state.proxy() as data:
             data["experience"] = msg.text
     await ResumeFormState.next();

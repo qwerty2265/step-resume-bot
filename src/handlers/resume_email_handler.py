@@ -12,13 +12,13 @@ async def resume_email_handler(msg: types.Message, state: FSMContext) -> None:
     input_message: str = msg.text
     error_message: str = 'Случилась непредвиденная ошибка.'
 
-    if not contains_at_symbol(input_message):
-        error_message = 'Ваш ответ должен включать в себе "@".'
-
     if contains_at_symbol(input_message):
         async with state.proxy() as data:
             data["email"] = input_message
-        await ResumeFormState.next();
-        return await msg.answer(message, parse_mode="HTML")
-    
-    await msg.answer(error_message, parse_mode="HTML")
+        
+    if not contains_at_symbol(input_message) and input_message != 'Вернуться на прошлый шаг':
+        error_message = 'Ваш ответ должен включать в себе "@".'
+        await msg.answer(error_message, parse_mode="HTML")
+
+    await ResumeFormState.next();
+    return await msg.answer(message, parse_mode="HTML")

@@ -17,7 +17,6 @@ async def resume_hardskills_handler(msg: types.Message, state: FSMContext) -> No
 
 А если вам хочется рассказать о своих личных качествах, то упомяните их в разделе «Дополнительные сведения».
 '''
-
     async with state.proxy() as data:
             data["hardskills"] = msg.text
     await ResumeFormState.next();
