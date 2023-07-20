@@ -61,13 +61,3 @@ async def come_back_handler(msg: types.Message, state: FSMContext) -> None:
         case 'ResumeFormState.UserAdditionalInformation':
             await ResumeFormState.previous()
             return await resume_softskills_handler(msg, state)
-
-        case _:
-            raise ValueError(f"Unexpected state_now value: {state_now}")
-    
-
-    
-
-
-    
-    

@@ -21,6 +21,10 @@ def correct_length_phone_number(input_string: str) -> bool:
     
     return True
 
+def contains_at_symbol(input_string: str) -> bool:
+    # Проверка на наличие @ в строке
+    return "@" in input_string
+
 def count_spaces_inside_string(input_string: str) -> int:
     # Используем метод .strip() для удаления пробелов с обоих сторон строки
     # Затем сравниваем длину исходной строки с длиной строки без пробелов по краям
