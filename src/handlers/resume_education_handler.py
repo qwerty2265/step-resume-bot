@@ -15,5 +15,5 @@ async def resume_education_handler(msg: types.Message, state: FSMContext) -> Non
 '''
     async with state.proxy() as data:
         data["education"] = msg.text
-    await ResumeFormState.next();
+    await ResumeFormState.next()
     return await msg.answer(message, parse_mode="HTML")

@@ -24,7 +24,7 @@ def encrypt_dict(dict: Dict[str, str]) -> Dict[str, str]:
     encrypted_dict = {}
 
     for key, value in dict.items():
-        if key == "phone_number" or key == "image":
+        if key == "phone_number":
             encrypted_dict[key] = value
         else:
             encrypted_value = encrypt_string(value)
@@ -32,7 +32,6 @@ def encrypt_dict(dict: Dict[str, str]) -> Dict[str, str]:
     
     return encrypted_dict
     
-
 def decrypt_string(encrypted_string) -> str:
     # Расшифровать строку
     try:
@@ -41,7 +40,7 @@ def decrypt_string(encrypted_string) -> str:
         decoded_string = decrypted_string.decode('utf-8')
         return decoded_string
     except:
-        return encrypt_string
+        save_decrypted_data_to_file(encrypted_string, "../src/assets/image.jpg")
 
 def decrypt_dict(encrypted_dict: Dict[str, str]) -> Dict[str, str]:
     # Расшифровать словарь
@@ -62,3 +61,10 @@ def decrypt_list(encrypted_list: List[str]) -> List[str]:
         decrypted_list.append(decrypted_value)
 
     return decrypted_list
+
+
+
+def save_decrypted_data_to_file(encrypted_data: str, file_path: str):
+    # Сохранить изображение в виде файла
+    f = Fernet(key)
+    decrypted_string = f.decrypt(encrypted_data)

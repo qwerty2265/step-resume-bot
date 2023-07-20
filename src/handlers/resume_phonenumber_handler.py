@@ -29,6 +29,6 @@ async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> N
         error_message = 'Ваш ответ должен содержать только цифры и знак "+".'
         return msg.answer(error_message, parse_mode="HTML")
 
-    await ResumeFormState.next();
+    await ResumeFormState.next()
     return await msg.answer(message, parse_mode="HTML")
     

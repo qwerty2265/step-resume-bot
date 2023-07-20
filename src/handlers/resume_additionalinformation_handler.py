@@ -12,12 +12,15 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
 '''
 
     keyboard_button1 = types.KeyboardButton(text='Сохранить в pdf')
-    keyboard_button2 = types.KeyboardButton(text='Сохранить в docx')
+    keyboard_button2 = types.KeyboardButton(text='Сохранить в docx (не работает)')
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(keyboard_button1)
     keyboard.add(keyboard_button2)
 
     async with state.proxy() as data:
+        if msg.text =='Завершить':
+            msg.text == ''
+            
         data["add_info"] = msg.text
         
     await ResumeFormState.next()

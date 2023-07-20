@@ -7,7 +7,7 @@ from src.handlers import bot_handlers
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import logging
 
-load_dotenv();
+load_dotenv()
 BOT_TOKEN: Final = os.getenv('BOT_TOKEN')
 STORAGE = MemoryStorage()
 
