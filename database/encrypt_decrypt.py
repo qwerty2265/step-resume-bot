@@ -11,5 +11,5 @@ def encrypt_data(data):
 # Функция для дешифрования данных
 def decrypt_data(encrypted_data):
     cipher_suite = Fernet(os.getenv("ENCRYPTION_KEY"))
-    decrypted_data = cipher_suite.decrypt(encrypted_data).decode()
+    decrypted_data = [cipher_suite.decrypt(item.encode()) for item in encrypted_data]
     return decrypted_data

@@ -1,7 +1,6 @@
 from database.encrypt_decrypt import encrypt_data
 from aiogram.dispatcher import FSMContext
 from database.sqlite_db import database, cursor
-import logging
 
 async def sqlite_add_command(state: FSMContext) -> None:
     async with state.proxy() as data:
