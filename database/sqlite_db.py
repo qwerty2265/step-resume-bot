@@ -3,12 +3,12 @@ from typing import Final
 from .key_generate import key_generate
 import logging
 
-def sqlite_start():
-    global database, cursor
-    path: Final = './database/telegram_bot_users_resume.db'
-    database = sqlite.connect(path)
-    cursor = database.cursor()
+global database, cursor
+path: Final = './database/telegram_bot_users_resume.db'
+database = sqlite.connect(path)
+cursor = database.cursor()
 
+def sqlite_start():
     if not database:
         logging.error('DATABASE IS NOT CONNECTED')
         return
@@ -33,5 +33,3 @@ def sqlite_start():
     )
     ''')
     database.commit()
-
-    

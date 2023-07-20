@@ -1,6 +1,9 @@
-from aiogram import types
+import os
+from aiogram import types, Bot
 from aiogram.dispatcher import FSMContext
+from dotenv import load_dotenv
 from ..state import ResumeFormState
+
 
 async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
     message: str = '''
@@ -15,9 +18,19 @@ async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
 '''
     error_message: str = 'Ваше сообщение должно содержать только фотографию.'
     
+    load_dotenv()
+    BOT_TOKEN = os.getenv('BOT_TOKEN')
+    bot = Bot(BOT_TOKEN)
+
     if msg.photo:
+        # Конвертация изображения в биты
+        image = msg.photo
+        image_info = await bot.get_file(image[len(image) - 1].file_id)
+        new_image = (await bot.download_file(image_info.file_path)).read()
+        await bot.close()
+
         async with state.proxy() as data:
-            data["image"] = msg.photo
+            data["image"] = new_image
         await ResumeFormState.next();
         return await msg.answer(message, parse_mode="HTML")
 

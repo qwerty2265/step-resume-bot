@@ -23,3 +23,4 @@ class ResumeFormState(StatesGroup):
     UserHardSkills = State()
     UserSoftSkills = State()
     UserAdditionalInformation = State()
+    ResumeEnd = State()
