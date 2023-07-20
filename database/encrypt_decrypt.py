@@ -1,15 +1,64 @@
 import os
 from dotenv import load_dotenv
-from cryptography.fernet import Fernet
+from typing import Final, Dict, List
+from cryptography.fernet  import Fernet
 
-# Функция для шифрования данных
-def encrypt_data(data):
-    cipher_suite = Fernet(os.getenv("ENCRYPTION_KEY"))
-    encrypted_data = [cipher_suite.encrypt(item.encode()) for item in data]
-    return encrypted_data
+load_dotenv()
+key = os.getenv("ENCRYPTION_KEY")
 
-# Функция для дешифрования данных
-def decrypt_data(encrypted_data):
-    cipher_suite = Fernet(os.getenv("ENCRYPTION_KEY"))
-    decrypted_data = [cipher_suite.decrypt(item.encode()) for item in encrypted_data]
-    return decrypted_data
+def encrypt_string(string) -> str:
+    # Зашифровать строку
+    if isinstance(string, str):
+        encoded_string = string.encode('utf-8')
+
+    elif isinstance(string, bytes):
+        encoded_string = string
+        
+    f = Fernet(key)
+    encrypted_string = f.encrypt(encoded_string)
+
+    return encrypted_string
+
+def encrypt_dict(dict: Dict[str, str]) -> Dict[str, str]:
+    # Зашифровать словарь
+    encrypted_dict = {}
+
+    for key, value in dict.items():
+        if key == "phone_number" or key == "image":
+            encrypted_dict[key] = value
+        else:
+            encrypted_value = encrypt_string(value)
+            encrypted_dict[key] = encrypted_value
+    
+    return encrypted_dict
+    
+
+def decrypt_string(encrypted_string) -> str:
+    # Расшифровать строку
+    try:
+        f = Fernet(key)
+        decrypted_string = f.decrypt(encrypted_string)
+        decoded_string = decrypted_string.decode('utf-8')
+        return decoded_string
+    except:
+        return encrypt_string
+
+def decrypt_dict(encrypted_dict: Dict[str, str]) -> Dict[str, str]:
+    # Расшифровать словарь
+    decrypted_dict = {}
+
+    for key, encrypted_value in encrypted_dict.items():
+        decrypted_value = decrypt_string(encrypted_value)
+        decrypted_dict[key] = decrypted_value
+
+    return decrypted_dict
+
+def decrypt_list(encrypted_list: List[str]) -> List[str]:
+    # Расшифровать список
+    decrypted_list = []
+
+    for encrypted_value in encrypted_list:
+        decrypted_value = decrypt_string(encrypted_value)
+        decrypted_list.append(decrypted_value)
+
+    return decrypted_list

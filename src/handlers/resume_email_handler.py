@@ -18,7 +18,7 @@ async def resume_email_handler(msg: types.Message, state: FSMContext) -> None:
         
     if not contains_at_symbol(input_message) and input_message != 'Вернуться на прошлый шаг':
         error_message = 'Ваш ответ должен включать в себе "@".'
-        await msg.answer(error_message, parse_mode="HTML")
+        return await msg.answer(error_message, parse_mode="HTML")
 
     await ResumeFormState.next();
     return await msg.answer(message, parse_mode="HTML")
