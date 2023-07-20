@@ -20,10 +20,15 @@ async def resume_city_handler(msg: types.Message, state: FSMContext) -> None:
     input_message: str = msg.text
     error_message: str = 'Ваш ответ должен содержать только буквы.'
 
+    keyboard_button1 = types.KeyboardButton(text='Вернуться на прошлый шаг')
+    keyboard_button2 = types.KeyboardButton(text='Вернуться в начало')
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(keyboard_button1, keyboard_button2)
+
     if contains_only_letters(input_message):
         async with state.proxy() as data:
             data["city"] = msg.text
         await ResumeFormState.next()
-        return await msg.answer(message, parse_mode="HTML")
+        return await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")
 
-    await msg.answer(error_message, parse_mode="HTML")
+    await msg.answer(error_message, reply_markup=keyboard, parse_mode="HTML")

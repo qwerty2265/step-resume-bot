@@ -12,6 +12,7 @@ from .resume_experience_handler import resume_experience_handler
 from .resume_hardskills_handler import resume_hardskills_handler
 from .resume_softskills_handler import resume_softskills_handler
 from .resume_additionalinformation_handler import resume_additionalinformation_handler
+from .come_back_handler import come_back_handler
 from .pdf_save_handler import pdf_save_handler
 from ..state import *
 
@@ -22,6 +23,20 @@ def register_handlers(dp):
 
     dp.register_message_handler(
         pdf_save_handler, Text(equals='Сохранить в pdf', ignore_case=True), state=ResumeFormState.ResumeEnd
+    )
+
+    dp.register_message_handler(
+        come_back_handler, Text(equals='Вернуться на прошлый шаг', ignore_case=True), state=[
+            ResumeFormState.UserCity,
+            ResumeFormState.UserImage,
+            ResumeFormState.UserGoal,
+            ResumeFormState.UserPhoneNumber,
+            ResumeFormState.UserEmail,
+            ResumeFormState.UserEducation,
+            ResumeFormState.UserExperience,
+            ResumeFormState.UserHardSkills,
+            ResumeFormState.UserSoftSkills
+        ]
     )
 
     dp.register_message_handler(

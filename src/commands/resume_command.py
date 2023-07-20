@@ -11,6 +11,5 @@ async def resume_command(msg: types.Message) -> None:
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(keyboard_button)
 
-
     await ResumeFormState.UserFullName.set()
     await msg.answer(message, reply_markup=keyboard)

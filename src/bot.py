@@ -2,8 +2,8 @@ import os
 from typing import Final
 from dotenv import load_dotenv
 from aiogram import Dispatcher, Bot, executor
-from .commands import bot_commands
-from .handlers import bot_handlers
+from src.commands import bot_commands
+from src.handlers import bot_handlers
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 import logging
 
