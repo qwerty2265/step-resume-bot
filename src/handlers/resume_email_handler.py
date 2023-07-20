@@ -9,5 +9,7 @@ async def resume_email_handler(msg: types.Message, state: FSMContext) -> None:
 Если нет высшего образование можете указать дополнительное образования курсы, которые проходили и т.д.
 '''
 
+    async with state.proxy() as data:
+        data["email"] = msg.text
     await ResumeFormState.next();
     return await msg.answer(message, parse_mode="HTML")

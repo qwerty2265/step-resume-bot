@@ -10,11 +10,10 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
 А также будет выслано вам в виде pdf/docx файла.
 '''
 
-    keyboard_button1 = types.KeyboardButton(text='Вернуться в начало')
-    keyboard_button2 = types.KeyboardButton(text='Завершить')
+    keyboard_button1 = types.KeyboardButton(text='Сохранить в pdf')
+    keyboard_button2 = types.KeyboardButton(text='Сохранить в docx')
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(keyboard_button1)
     keyboard.add(keyboard_button2)
 
-    await state.finish();
     return await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")

@@ -16,6 +16,8 @@ async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
     error_message: str = 'Ваше сообщение должно содержать только фотографию.'
     
     if msg.photo:
+        async with state.proxy() as data:
+            data["image"] = msg.photo
         await ResumeFormState.next();
         return await msg.answer(message, parse_mode="HTML")
 

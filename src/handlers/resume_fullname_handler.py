@@ -17,8 +17,9 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
         error_message = 'Ваш ответ должен содержать только буквы.'
 
     if contains_only_letters(input_message) and count_spaces_inside_string(input_message) >= 1:
-        await ResumeFormState.next();
-
+        async with state.proxy() as data:
+            data["full_name"] = msg.text
+        await ResumeFormState.next()
         return await msg.answer(message, parse_mode="HTML")
 
     await msg.answer(error_message, parse_mode="HTML")

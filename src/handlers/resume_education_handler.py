@@ -13,6 +13,7 @@ async def resume_education_handler(msg: types.Message, state: FSMContext) -> Non
 Не стоит врать о своем резюме или приукрашивать. 
 Помните, если на собеседовании вам все-таки удастся убедить работодателя или заказчика, что вы подходите, то уже в процессе работы обман 100% будет раскрыт.
 '''
-
+    async with state.proxy() as data:
+        data["education"] = msg.text
     await ResumeFormState.next();
     return await msg.answer(message, parse_mode="HTML")

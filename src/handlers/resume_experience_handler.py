@@ -11,5 +11,7 @@ async def resume_experience_handler(msg: types.Message, state: FSMContext) -> No
 •	Например, владение конкретными языками программирования, поддержка и администрирование серверного оборудования или владение специализированными программами.  
 '''
 
+    async with state.proxy() as data:
+            data["experience"] = msg.text
     await ResumeFormState.next();
     return await msg.answer(message, parse_mode="HTML")

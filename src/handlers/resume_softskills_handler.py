@@ -13,6 +13,11 @@ async def resume_softskills_handler(msg: types.Message, state: FSMContext) -> No
 Неверно:
 Коммуникабельность.
 '''
+    keyboard_button2 = types.KeyboardButton(text='Завершить')
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(keyboard_button2)
 
+    async with state.proxy() as data:
+            data["softskills"] = msg.text
     await ResumeFormState.next();
-    return await msg.answer(message, parse_mode="HTML")
+    return await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")
