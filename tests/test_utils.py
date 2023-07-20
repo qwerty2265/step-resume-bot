@@ -1,5 +1,5 @@
 import unittest
-from src.utils import contains_phone_number, correct_length_phone_number, count_spaces_inside_string, contains_only_letters
+from src.utils import contains_at_symbol, contains_phone_number, correct_length_phone_number, count_spaces_inside_string, contains_only_letters
 
 class TestFunctions(unittest.TestCase):
     def test_contains_phone_number(self):
@@ -7,6 +7,12 @@ class TestFunctions(unittest.TestCase):
         self.assertTrue(contains_phone_number("9876543210"))
         self.assertFalse(contains_phone_number("1234+5"))
         self.assertFalse(contains_phone_number("abc1234567"))
+
+    def test_contains_at_symbol(self):
+        self.assertTrue(contains_at_symbol("@ @   "))
+        self.assertTrue(contains_at_symbol("fsdfdsfsd@fdsfsdfds  dfsd "))
+        self.assertFalse(contains_at_symbol("fdsffdsaaaa+5"))
+        self.assertFalse(contains_at_symbol("       "))
 
     def test_correct_length_phone_number(self):
         self.assertTrue(correct_length_phone_number("+12345678901"))
