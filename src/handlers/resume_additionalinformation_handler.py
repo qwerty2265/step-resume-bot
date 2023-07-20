@@ -19,7 +19,7 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
 
     async with state.proxy() as data:
         if msg.text =='Завершить':
-            msg.text == ''
+            msg.text = ''
             
         data["add_info"] = msg.text
         
