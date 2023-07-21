@@ -51,7 +51,10 @@ def register_handlers(dp):
         resume_city_handler, state=ResumeFormState.UserCity, content_types=types.ContentTypes.TEXT
     )
     dp.register_message_handler(
-        resume_image_handler, state=ResumeFormState.UserImage
+        resume_image_handler, state=ResumeFormState.UserImage, content_types=types.ContentTypes.PHOTO
+    )
+    dp.register_message_handler(
+        resume_image_handler, state=ResumeFormState.UserImage, content_types=types.ContentTypes.TEXT
     )
     dp.register_message_handler(
         resume_goal_handler, state=ResumeFormState.UserGoal, content_types=types.ContentTypes.TEXT

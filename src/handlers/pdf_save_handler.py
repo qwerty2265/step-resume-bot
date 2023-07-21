@@ -36,6 +36,7 @@ async def pdf_save_handler(msg: types.Message, state: FSMContext) -> None:
     # Зашифрованные данные пользователя
     try:
         decrypted_data = sqlite_select_by_phone_command(phone_number)
+        print(decrypted_data)
     except Exception as ex:
         logging.error('Пользователь не был найден')
         logging.error(ex)
