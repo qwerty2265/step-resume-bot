@@ -16,11 +16,12 @@ async def pdf_save_handler(msg: types.Message, state: FSMContext) -> None:
 
     if phone_number:
         message: str = f'''
-Минуту...
+Это может занять некоторое время...
 '''
     else:
         message: str = '''
-Минуту...
+Это может занять некоторое время...
+
 Пользователь не найден в памяти.
 Попробуйте заполнить таблицу еще раз.
 '''

@@ -24,3 +24,7 @@ class ResumeFormState(StatesGroup):
     UserSoftSkills = State()
     UserAdditionalInformation = State()
     ResumeEnd = State()
+
+class AdminState(StatesGroup):
+    AdminPassword = State()
+    AdminStart = State()

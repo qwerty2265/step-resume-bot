@@ -12,11 +12,16 @@ from .resume_experience_handler import resume_experience_handler
 from .resume_hardskills_handler import resume_hardskills_handler
 from .resume_softskills_handler import resume_softskills_handler
 from .resume_additionalinformation_handler import resume_additionalinformation_handler
+from .admin_password_handler import admin_password_handler
 from .come_back_handler import come_back_handler
 from .pdf_save_handler import pdf_save_handler
 from ..state import *
 
 def register_handlers(dp):
+    dp.register_message_handler(
+        admin_password_handler, state=AdminState.AdminPassword, content_types=types.ContentTypes.TEXT
+    )
+
     dp.register_message_handler(
         callcenter_handler, state=UserState.ShowCallcenters, content_types=types.ContentTypes.TEXT
     )

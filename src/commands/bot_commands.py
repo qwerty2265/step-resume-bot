@@ -1,13 +1,16 @@
 from aiogram import types
-from aiogram.dispatcher.filters import Text
+from aiogram.dispatcher.filters import Text, BoundFilter, ChatTypeFilter
 from .start_command import start_command
 from .callcenter_command import callcenter_command
 from .resume_command import resume_command
 from .help_command import help_command
+from .admin_command import admin_command
 from ..state import *
 
 def register_commands(dp):
-    dp.register_message_handler(start_command, commands=['start'], state="*")
+    dp.register_message_handler(admin_command, commands=['admin'] , state="*",)
+
+    dp.register_message_handler(start_command, commands=['start'], state="*",)
     dp.register_message_handler(
         start_command, Text(equals="вернуться в начало", ignore_case=True), state="*"
     )
