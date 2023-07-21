@@ -26,9 +26,11 @@ You can download either [SQlite](https://www.sqlite.org/download.html) or [SQLit
 ## Bot Launch
 ```
 step-resume-bot/  
+├─ database/
 ├─ public/  
 ├─ src/  
 ├─ tests/  
+├─ .env
 ├─ .gitignore  
 ├─ LICENSE  
 ├─ README.md  
