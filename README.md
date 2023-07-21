@@ -1,7 +1,5 @@
 # NOT READY YET
 ### private channel with user's resumes - X  
-### "skip" button in resume command = X
-### pdf file support - X
 ### docx file support - X
 ### . . .
 
@@ -18,6 +16,7 @@ pip install python-dotenv
 pip install pysqlcipher3
 pip install reportlab
 pip install cryptography
+pip install Pillow
 ```
 
 ## Database
@@ -39,6 +38,7 @@ step-resume-bot/
 ```
 BOT_TOKEN={YOUR TOKEN}
 BOT_USERNAME={YOUR NAME}
+ADMIN_PASSWORD={YOUR PASSWORD}
 ENCRYPTION_KEY={WILL CREATE AFTER FIRST LAUNCH}
 ```
 
