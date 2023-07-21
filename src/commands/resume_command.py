@@ -12,4 +12,5 @@ async def resume_command(msg: types.Message) -> None:
     keyboard.add(keyboard_button)
 
     await ResumeFormState.UserFullName.set()
-    await msg.answer(message, reply_markup=keyboard)
+    with open('./public/images/1_step.png', 'rb') as photo_file:
+        await msg.answer_photo(photo_file, caption=message, reply_markup=keyboard)

@@ -27,6 +27,8 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
         async with state.proxy() as data:
             data["full_name"] = msg.text
         await ResumeFormState.next()
-        return await msg.answer(message, reply_markup=keyboardPass, parse_mode="HTML")
+
+        with open('./public/images/2_step.png', 'rb') as photo_file:
+            return await msg.answer_photo(photo_file, reply_markup=keyboardPass, caption=message)
 
     await msg.answer(error_message, reply_markup=keyboardFail, parse_mode="HTML")

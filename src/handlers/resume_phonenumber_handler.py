@@ -30,5 +30,6 @@ async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> N
         return await msg.answer(error_message, parse_mode="HTML")
 
     await ResumeFormState.next()
-    return await msg.answer(message, parse_mode="HTML")
+    with open('./public/images/5.1_step.png', 'rb') as photo_file:
+            return await msg.answer_photo(photo_file,caption=message)
     

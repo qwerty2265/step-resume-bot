@@ -28,12 +28,19 @@ async def resume_experience_handler(msg: types.Message, state: FSMContext) -> No
 «Значительно повысил посещаемость сайта» заменяйте на «Повысил посещаемость на 12% за квартал».
 '''
 
+    keyboard_button1 = types.KeyboardButton(text='Вернуться на прошлый шаг')
+    keyboard_button2 = types.KeyboardButton(text='Вернуться в начало')
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(keyboard_button1, keyboard_button2)
+
     if msg.text.lower() == 'нет опыта работы':
         await msg.answer(no_ex_message, parse_mode="HTML")
-        await msg.answer(step_7_message, parse_mode="HTML")
+        with open('./public/images/7_step.png', 'rb') as photo_file:
+            return await msg.answer_photo(photo_file, caption=step_7_message)
 
     else:
         async with state.proxy() as data:
                 data["experience"] = msg.text
         await ResumeFormState.next();
-        return await msg.answer(message, parse_mode="HTML")
+        with open('./public/images/8_step.png', 'rb') as photo_file:
+            return await msg.answer_photo(photo_file, reply_markup=keyboard, caption=message)

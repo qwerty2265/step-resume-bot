@@ -16,9 +16,11 @@ async def resume_goal_handler(msg: types.Message, state: FSMContext) -> None:
         async with state.proxy() as data:
             data["goal"] = ''
         await ResumeFormState.next();
-        return await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")
+        with open('./public/images/5_step.png', 'rb') as photo_file:
+            return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)
     
     async with state.proxy() as data:
             data["goal"] = msg.text
     await ResumeFormState.next();
-    return await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")
+    with open('./public/images/5_step.png', 'rb') as photo_file:
+        return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)

@@ -31,13 +31,15 @@ async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
         async with state.proxy() as data:
             data["image"] = new_image
         await ResumeFormState.next();
-        return await msg.answer(message,parse_mode="HTML")
+        with open('./public/images/4_step.png', 'rb') as photo_file:
+            return await msg.answer_photo(photo_file, caption=message)
     
     elif msg.text.lower() == 'пропустить шаг':
         async with state.proxy() as data:
             data["image"] = ''
         await ResumeFormState.next();
-        return await msg.answer(message, parse_mode="HTML")
+        with open('./public/images/4_step.png', 'rb') as photo_file:
+            return await msg.answer_photo(photo_file, caption=message)
 
     
     await msg.answer(error_message, parse_mode="HTML")

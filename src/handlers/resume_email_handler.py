@@ -12,6 +12,12 @@ async def resume_email_handler(msg: types.Message, state: FSMContext) -> None:
     input_message: str = msg.text
     error_message: str = 'Случилась непредвиденная ошибка.'
 
+    keyboard_button1 = types.KeyboardButton(text='Вернуться на прошлый шаг')
+    keyboard_button2 = types.KeyboardButton(text='Вернуться в начало')
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(keyboard_button1, keyboard_button2)
+
+
     if contains_at_symbol(input_message):
         async with state.proxy() as data:
             data["email"] = input_message
@@ -21,4 +27,5 @@ async def resume_email_handler(msg: types.Message, state: FSMContext) -> None:
         return await msg.answer(error_message, parse_mode="HTML")
 
     await ResumeFormState.next();
-    return await msg.answer(message, parse_mode="HTML")
+    with open('./public/images/6_step.png', 'rb') as photo_file:
+        return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)
