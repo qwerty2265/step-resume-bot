@@ -17,7 +17,6 @@ async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> N
     input_message: str = msg.text
     error_message: str = 'Случилась непредвиденная ошибка.'
     
-
     if contains_phone_number(input_message) and correct_length_phone_number(input_message):
         async with state.proxy() as data:
             data["phone_number"] = encrypt_string(input_message)
@@ -28,7 +27,7 @@ async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> N
 
     elif not contains_phone_number(input_message) and input_message != 'Вернуться на прошлый шаг':
         error_message = 'Ваш ответ должен содержать только цифры и знак "+".'
-        return msg.answer(error_message, parse_mode="HTML")
+        return await msg.answer(error_message, parse_mode="HTML")
 
     await ResumeFormState.next()
     return await msg.answer(message, parse_mode="HTML")

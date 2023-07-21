@@ -53,7 +53,7 @@ async def pdf_save_handler(msg: types.Message, state: FSMContext) -> None:
                 await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")
                 await msg.answer_document(file, reply_markup=keyboard)
                 os.remove(pdf_file)
-                state.finish()
+                await state.finish()
                 return
     except Exception as ex:
         logging.error('Не удалось создать пфд документ')

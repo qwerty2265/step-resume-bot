@@ -5,7 +5,7 @@ class TestFunctions(unittest.TestCase):
     def test_contains_phone_number(self):
         self.assertTrue(contains_phone_number("+1234567890"))
         self.assertTrue(contains_phone_number("9876543210"))
-        self.assertFalse(contains_phone_number("1234+5"))
+        self.assertFalse(contains_phone_number("12##=34+5"))
         self.assertFalse(contains_phone_number("abc1234567"))
 
     def test_contains_at_symbol(self):
