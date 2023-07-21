@@ -11,7 +11,7 @@ load_dotenv()
 BOT_TOKEN: Final = os.getenv('BOT_TOKEN')
 STORAGE = MemoryStorage()
 
-bot = Bot(token=BOT_TOKEN, parse_mode="HTML")
+bot = Bot(token=BOT_TOKEN, parse_mode='HTML')
 dp = Dispatcher(bot, storage=STORAGE)
 
 def start_bot() -> None:

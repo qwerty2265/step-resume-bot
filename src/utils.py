@@ -1,8 +1,8 @@
 def contains_phone_number(input_string: str) -> bool:
-    # Проверка на наличие только цифр и знака "+" в начале строки
+    # Проверка на наличие только цифр и знака '+' в начале строки
     input_string = input_string.strip()
-    allowed_characters = "0123456789"
-    if input_string[0] not in allowed_characters and input_string[0] != "+":
+    allowed_characters = '0123456789'
+    if input_string[0] not in allowed_characters and input_string[0] != '+':
         return False
     for char in input_string[1:]:
         if char not in allowed_characters:
@@ -23,7 +23,7 @@ def correct_length_phone_number(input_string: str) -> bool:
 
 def contains_at_symbol(input_string: str) -> bool:
     # Проверка на наличие @ в строке
-    return "@" in input_string
+    return '@' in input_string
 
 def count_spaces_inside_string(input_string: str) -> int:
     # Используем метод .strip() для удаления пробелов с обоих сторон строки

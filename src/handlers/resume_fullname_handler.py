@@ -25,10 +25,10 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
 
     if contains_only_letters(input_message) and count_spaces_inside_string(input_message) >= 1:
         async with state.proxy() as data:
-            data["full_name"] = msg.text
+            data['full_name'] = msg.text
         await ResumeFormState.next()
 
         with open('./public/images/2_step.png', 'rb') as photo_file:
             return await msg.answer_photo(photo_file, reply_markup=keyboardPass, caption=message)
 
-    await msg.answer(error_message, reply_markup=keyboardFail, parse_mode="HTML")
+    await msg.answer(error_message, reply_markup=keyboardFail, parse_mode='HTML')

@@ -21,7 +21,7 @@ async def resume_education_handler(msg: types.Message, state: FSMContext) -> Non
     keyboard.add(keyboard_button3)
 
     async with state.proxy() as data:
-        data["education"] = msg.text
+        data['education'] = msg.text
     await ResumeFormState.next()
     with open('./public/images/7_step.png', 'rb') as photo_file:
         return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)

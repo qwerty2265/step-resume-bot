@@ -7,7 +7,7 @@ import logging
 # формат логирования
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     test_loader = unittest.TestLoader()
     test_suite = test_loader.loadTestsFromTestCase(test_utils.TestFunctions)
     test_runner = unittest.TextTestRunner(verbosity=2)

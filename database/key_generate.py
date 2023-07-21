@@ -9,4 +9,4 @@ load_dotenv()
 def key_generate() -> None:
     if os.getenv('ENCRYPTION_KEY') is None:
         with open('.env', 'a') as env_file:
-            env_file.write(f"\nENCRYPTION_KEY={Fernet.generate_key().decode()}")
+            env_file.write(f'\nENCRYPTION_KEY={Fernet.generate_key().decode()}')

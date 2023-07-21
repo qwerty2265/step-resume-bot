@@ -3,7 +3,7 @@ from ..state import AdminState
 
 async def admin_command(msg: types.Message) -> None:
 
-    if msg.chat.type == "group":
+    if msg.chat.type == 'group':
         message: str = '''
 Введите пароль
 '''     

@@ -4,7 +4,7 @@ from typing import Final, Dict, List
 from cryptography.fernet  import Fernet
 
 load_dotenv()
-key = os.getenv("ENCRYPTION_KEY")
+key = os.getenv('ENCRYPTION_KEY')
 
 def encrypt_string(string) -> str:
     # Зашифровать строку
@@ -24,7 +24,7 @@ def encrypt_dict(dict: Dict[str, str]) -> Dict[str, str]:
     encrypted_dict = {}
 
     for key, value in dict.items():
-        if key == "phone_number":
+        if key == 'phone_number':
             encrypted_dict[key] = value
         else:
             encrypted_value = encrypt_string(value)

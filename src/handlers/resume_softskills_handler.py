@@ -19,7 +19,7 @@ async def resume_softskills_handler(msg: types.Message, state: FSMContext) -> No
     keyboard.add(keyboard_button1,keyboard_button2)
 
     async with state.proxy() as data:
-            data["softskills"] = msg.text
-    await ResumeFormState.next();
+            data['softskills'] = msg.text
+    await ResumeFormState.next()
     with open('./public/images/10_step.png', 'rb') as photo_file:
             return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)

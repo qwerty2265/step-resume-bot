@@ -14,13 +14,13 @@ async def resume_goal_handler(msg: types.Message, state: FSMContext) -> None:
 
     if msg.text.lower() == 'пропустить шаг':
         async with state.proxy() as data:
-            data["goal"] = ''
-        await ResumeFormState.next();
+            data['goal'] = ''
+        await ResumeFormState.next()
         with open('./public/images/5_step.png', 'rb') as photo_file:
             return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)
     
     async with state.proxy() as data:
-            data["goal"] = msg.text
-    await ResumeFormState.next();
+            data['goal'] = msg.text
+    await ResumeFormState.next()
     with open('./public/images/5_step.png', 'rb') as photo_file:
         return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)

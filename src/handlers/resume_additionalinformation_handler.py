@@ -21,7 +21,7 @@ async def resume_additionalinformation_handler(msg: types.Message, state: FSMCon
         if msg.text =='Завершить':
             msg.text = ''
             
-        data["add_info"] = msg.text
+        data['add_info'] = msg.text
         
     await ResumeFormState.next()
-    return await msg.answer(message, reply_markup=keyboard, parse_mode="HTML")
+    return await msg.answer(message, reply_markup=keyboard, parse_mode='HTML')

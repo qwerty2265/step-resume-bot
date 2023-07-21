@@ -20,12 +20,12 @@ async def resume_email_handler(msg: types.Message, state: FSMContext) -> None:
 
     if contains_at_symbol(input_message):
         async with state.proxy() as data:
-            data["email"] = input_message
+            data['email'] = input_message
         
     if not contains_at_symbol(input_message) and input_message != 'Вернуться на прошлый шаг':
-        error_message = 'Ваш ответ должен включать в себе "@".'
-        return await msg.answer(error_message, parse_mode="HTML")
+        error_message = 'Ваш ответ должен включать в себе '@'.'
+        return await msg.answer(error_message, parse_mode='HTML')
 
-    await ResumeFormState.next();
+    await ResumeFormState.next()
     with open('./public/images/6_step.png', 'rb') as photo_file:
         return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)
