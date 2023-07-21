@@ -16,6 +16,7 @@ async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> N
 '''
     input_message: str = msg.text
     error_message: str = 'Случилась непредвиденная ошибка.'
+    
 
     if contains_phone_number(input_message) and correct_length_phone_number(input_message):
         async with state.proxy() as data:

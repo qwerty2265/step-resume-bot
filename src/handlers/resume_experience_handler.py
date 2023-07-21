@@ -10,7 +10,30 @@ async def resume_experience_handler(msg: types.Message, state: FSMContext) -> No
 •	Указывайте только то, что относиться к требованиям вакансии. Укажите только практические навыки. 
 •	Например, владение конкретными языками программирования, поддержка и администрирование серверного оборудования или владение специализированными программами.  
 '''
-    async with state.proxy() as data:
-            data["experience"] = msg.text
-    await ResumeFormState.next();
-    return await msg.answer(message, parse_mode="HTML")
+    no_ex_message: str = '''
+Отлично, ты перешел в раздел нет опыта работы. Ты задаешься вопросам что писать, когда опыта работы нет?
+Запомни! 
+Любой опыт – это опыт, не забывайте его указывать.
+Есть разные возможности получить первичный опты. И в резюме вносим его именно в графу «место работы», например:
+•	Опыт в профильных соревнованиях во время обучения.
+•	Опыт создания проектов для семьи/друзей.
+•	Опыт стажировки.
+•	Волонтерство.
+•	Собственный проект.
+'''
+    step_7_message: str = '''
+<b>Шаг 7</b>: Напишите про свой опыт работы.
+
+Конкретизируйте. Рекрутеров интересуют цифры и факты, поэтому 
+«Значительно повысил посещаемость сайта» заменяйте на «Повысил посещаемость на 12% за квартал».
+'''
+
+    if msg.text.lower() == 'нет опыта работы':
+        await msg.answer(no_ex_message, parse_mode="HTML")
+        await msg.answer(step_7_message, parse_mode="HTML")
+
+    else:
+        async with state.proxy() as data:
+                data["experience"] = msg.text
+        await ResumeFormState.next();
+        return await msg.answer(message, parse_mode="HTML")

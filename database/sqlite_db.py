@@ -21,7 +21,7 @@ def sqlite_start():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         full_name TEXT NOT NULL,
         city TEXT NOT NULL,
-        image BLOB NOT NULL,
+        image BLOB,
         goal TEXT,
         phone_number TEXT NOT NULL,
         email TEXT NOT NULL,
