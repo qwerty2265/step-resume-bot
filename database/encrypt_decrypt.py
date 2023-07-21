@@ -40,7 +40,8 @@ def decrypt_string(encrypted_string) -> str:
         decoded_string = decrypted_string.decode('utf-8')
         return decoded_string
     except:
-        save_decrypted_data_to_file(encrypted_string, "../src/assets/image.jpg")
+       decrypted_string = f.decrypt(encrypted_string)
+       return decrypted_string
 
 def decrypt_dict(encrypted_dict: Dict[str, str]) -> Dict[str, str]:
     # Расшифровать словарь
@@ -61,10 +62,3 @@ def decrypt_list(encrypted_list: List[str]) -> List[str]:
         decrypted_list.append(decrypted_value)
 
     return decrypted_list
-
-
-
-def save_decrypted_data_to_file(encrypted_data: str, file_path: str):
-    # Сохранить изображение в виде файла
-    f = Fernet(key)
-    decrypted_string = f.decrypt(encrypted_data)
