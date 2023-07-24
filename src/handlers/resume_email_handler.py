@@ -20,7 +20,7 @@ async def resume_email_handler(msg: types.Message, state: FSMContext) -> None:
 
     if contains_at_symbol(input_message):
         async with state.proxy() as data:
-            data['email'] = input_message
+            if input_message.lower() != 'вернуться на прошлый шаг': data['email'] = input_message
         
     if not contains_at_symbol(input_message) and input_message != 'Вернуться на прошлый шаг':
         error_message = 'Ваш ответ должен включать в себе '@'.'

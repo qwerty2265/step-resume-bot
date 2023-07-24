@@ -25,7 +25,7 @@ async def resume_fullname_handler(msg: types.Message, state: FSMContext) -> None
 
     if contains_only_letters(input_message) and count_spaces_inside_string(input_message) >= 1:
         async with state.proxy() as data:
-            data['full_name'] = msg.text
+            if input_message.lower() != 'вернуться на прошлый шаг': data['full_name'] = msg.text
         await ResumeFormState.next()
 
         with open('./public/images/2_step.png', 'rb') as photo_file:

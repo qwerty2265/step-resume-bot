@@ -13,13 +13,15 @@ async def resume_softskills_handler(msg: types.Message, state: FSMContext) -> No
 Неверно:
 Коммуникабельность.
 '''
+    input_message = msg.text
+
     keyboard_button1 = types.KeyboardButton(text='Вернуться на прошлый шаг')
     keyboard_button2 = types.KeyboardButton(text='Завершить')
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(keyboard_button1,keyboard_button2)
 
     async with state.proxy() as data:
-            data['softskills'] = msg.text
+            if input_message.lower() != 'вернуться на прошлый шаг': data['softskills'] = input_message
     await ResumeFormState.next()
     with open('./public/images/10_step.png', 'rb') as photo_file:
             return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)

@@ -13,6 +13,8 @@ async def resume_education_handler(msg: types.Message, state: FSMContext) -> Non
 Не стоит врать о своем резюме или приукрашивать. 
 Помните, если на собеседовании вам все-таки удастся убедить работодателя или заказчика, что вы подходите, то уже в процессе работы обман 100% будет раскрыт.
 '''
+    input_message = msg.text
+
     keyboard_button1 = types.KeyboardButton(text='Вернуться на прошлый шаг')
     keyboard_button2 = types.KeyboardButton(text='Вернуться в начало')
     keyboard_button3 = types.KeyboardButton(text='Нет опыта работы')
@@ -21,7 +23,7 @@ async def resume_education_handler(msg: types.Message, state: FSMContext) -> Non
     keyboard.add(keyboard_button3)
 
     async with state.proxy() as data:
-        data['education'] = msg.text
+        if input_message.lower() != 'вернуться на прошлый шаг': data['education'] = input_message
     await ResumeFormState.next()
     with open('./public/images/7_step.png', 'rb') as photo_file:
         return await msg.answer_photo(photo_file, reply_markup=keyboard,caption=message)

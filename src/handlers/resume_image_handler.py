@@ -17,6 +17,12 @@ async def resume_image_handler(msg: types.Message, state: FSMContext) -> None:
 Так вы сможете узнать, сколько стоит ваша работа, и рассказать ожидания на собеседовании.
 '''
     error_message: str = 'Ваше сообщение должно содержать только фотографию.'
+    input_message = msg.text
+
+    if input_message.lower() == 'вернуться на прошлый шаг':
+        await ResumeFormState.next()
+        with open('./public/images/4_step.png', 'rb') as photo_file:
+            return await msg.answer_photo(photo_file, caption=message)
     
     if msg.photo:
         # Конвертация изображения в биты

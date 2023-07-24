@@ -19,7 +19,7 @@ async def resume_phonenumber_handler(msg: types.Message, state: FSMContext) -> N
     
     if contains_phone_number(input_message) and correct_length_phone_number(input_message):
         async with state.proxy() as data:
-            data['phone_number'] = encrypt_string(input_message)
+            if input_message.lower() != 'вернуться на прошлый шаг': data['phone_number'] = encrypt_string(input_message)
     
     elif not correct_length_phone_number(input_message) and input_message != 'Вернуться на прошлый шаг':
         error_message = 'Ваш ответ должен содержать минимум 11 символов.'

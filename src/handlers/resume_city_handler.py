@@ -28,7 +28,7 @@ async def resume_city_handler(msg: types.Message, state: FSMContext) -> None:
 
     if contains_only_letters(input_message):
         async with state.proxy() as data:
-            data['city'] = msg.text
+            if input_message.lower() != 'вернуться на прошлый шаг': data['city'] = msg.text
         await ResumeFormState.next()
         with open('./public/images/3_step.png', 'rb') as photo_file:
             return await msg.answer_photo(photo_file, caption=message, reply_markup=keyboard)

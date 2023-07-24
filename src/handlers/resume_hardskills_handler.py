@@ -17,8 +17,10 @@ async def resume_hardskills_handler(msg: types.Message, state: FSMContext) -> No
 
 А если вам хочется рассказать о своих личных качествах, то упомяните их в разделе «Дополнительные сведения».
 '''
+    input_message = msg.text
+
     async with state.proxy() as data:
-            data['hardskills'] = msg.text
+            if input_message.lower() != 'вернуться на прошлый шаг': data['hardskills'] = input_message
     await ResumeFormState.next()
     with open('./public/images/9_step.png', 'rb') as photo_file:
             return await msg.answer_photo(photo_file,caption=message)
