@@ -1,6 +1,6 @@
 # NOT READY YET
-### private channel with user's resumes - X  
-### docx file support - X
+### ❌ private channel with user's resumes
+### ❌ docx file support
 ### . . .
 
 # Step Resume Bot
@@ -34,7 +34,7 @@ step-resume-bot/
 ├─ .gitignore  
 ├─ LICENSE  
 ├─ README.md  
-├─ run.py  <-- run this file
+├─ run.py  <-- run this file🚀
 ```
 ### .env Settings
 ```
